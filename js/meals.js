@@ -1,3 +1,4 @@
+document.getElementById('spinner').style.display = 'none';
 const loadMeals = (search) =>{
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
     fetch(url)
@@ -6,6 +7,7 @@ const loadMeals = (search) =>{
     .catch(error => console.log(error))
 }
 const displayMeals = (meals) =>{
+    document.getElementById('spinner').style.display = 'none';
     const mealContainer = document.getElementById('meal-container');
     mealContainer.innerHTML = '';
     meals.forEach(meal => {
@@ -24,6 +26,7 @@ const displayMeals = (meals) =>{
     });
 }
 const searchMeal = () => {
+    document.getElementById('spinner').style.display = 'block';
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     loadMeals(searchText);
